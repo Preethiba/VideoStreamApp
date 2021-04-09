@@ -9,9 +9,10 @@ class StreamCreate extends React.Component {
   }
 
   renderInput = ({ input, label, meta }) => {
+    const className = `field ${meta.error && meta.touched ? "error" : ""}`;
     //destructing input from formProps
     return (
-      <div className="field">
+      <div className={className}>
         <label>{label}</label>
         <input {...input} autoComplete="off" />
         {/* assigns form props to input tag and returns that to field component */}
@@ -20,7 +21,9 @@ class StreamCreate extends React.Component {
     );
   };
 
-  onSubmit(formValues) {}
+  onSubmit(formValues) {
+    
+  }
 
   render() {
     return (
