@@ -7,7 +7,7 @@ class StreamCreate extends React.Component {
     return (
       <div className="field">
         <label>{label}</label>
-        <input {...input} />{" "}
+        <input {...input} />
         {/* assigns form props to input tag and returns that to field component */}
       </div>
     );
