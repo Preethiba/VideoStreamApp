@@ -13,9 +13,13 @@ class StreamCreate extends React.Component {
     );
   }
 
+  onSubmit(event) {
+    event.preventDefault();
+  }
+
   render() {
     return (
-      <form className="ui form">
+      <form onSubmit={} className="ui form">
         <Field name="title" component={this.renderInput} label="Enter title" />
         <Field
           name="description"
