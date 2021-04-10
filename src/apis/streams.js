@@ -1,4 +1,4 @@
-import axios from "Axios";
+import axios from "axios";
 
 export default axios.create({
   baseURL: "https://videostream.stackblitz.io"
