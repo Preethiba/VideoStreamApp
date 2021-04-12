@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://videostream.stackblitz.io/"
+  baseURL: "https://my-json-server.typicode.com/Preethiba/VideoStreamApp/"
 });
