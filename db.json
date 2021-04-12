@@ -1,3 +1,7 @@
 {
-  "streams" : []
+  "streams" : [
+    {"title": "Gty",
+  "description": "Dery",
+  "id": 1},
+  ]
 }
