@@ -1,4 +1,4 @@
-import streams from "../apis/streams";
+import firebaseConfig from "../apis/streams";
 import {
   SIGN_IN,
   SIGN_OUT,
@@ -8,6 +8,13 @@ import {
   DELETE_STREAM,
   EDIT_STREAM
 } from "./Types";
+
+// Initialize Firebase
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+} else {
+  firebase.app(); // if already initialized, use that one
+}
 
 export const signIn = userId => {
   return {
@@ -23,7 +30,8 @@ export const signOut = () => {
 };
 
 export const createStream = formValues => async dispatch => {
-  const response = await streams.post("/posts", formValues);
+  const rootStreams = firebase.database().ref("streams/");
+  const response = await rootStreams.push(formValues);
 
   dispatch({ type: CREATE_STREAM, payload: response.data });
 };
