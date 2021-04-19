@@ -9,12 +9,6 @@ import {
   EDIT_STREAM
 } from "./Types";
 
-// Initialize Firebase
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-} else {
-  firebase.app(); // if already initialized, use that one
-}
 
 export const signIn = userId => {
   return {
@@ -30,6 +24,11 @@ export const signOut = () => {
 };
 
 export const createStream = formValues => async dispatch => {
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  } else {
+    firebase.app(); // if already initialized, use that one
+  }
   firebase
     .database()
     .ref("streams/")
