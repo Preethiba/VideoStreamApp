@@ -8,6 +8,7 @@
 export const firebaseConfig = {
   apiKey: "AIzaSyAulxfQiG9TqzEjI7shWJg6CGcCpbYos_s",
   authDomain: "streamy-45e7d.firebaseapp.com",
+  databaseURL: "https://streamy-45e7d-default-rtdb.firebaseio.com",
   projectId: "streamy-45e7d",
   storageBucket: "streamy-45e7d.appspot.com",
   messagingSenderId: "139885758480",
