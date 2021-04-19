@@ -30,8 +30,10 @@ export const signOut = () => {
 };
 
 export const createStream = formValues => async dispatch => {
-  const rootStreams = firebase.database().ref("streams/");
-  rootStreams.push(formValues);
+  firebase
+    .database()
+    .ref("streams/")
+    .push(formValues);
 };
 
 export const fetchStreams = () => async dispatch => {
