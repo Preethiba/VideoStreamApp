@@ -31,9 +31,7 @@ export const signOut = () => {
 
 export const createStream = formValues => async dispatch => {
   const rootStreams = firebase.database().ref("streams/");
-  const response = await rootStreams.push(formValues);
-
-  dispatch({ type: CREATE_STREAM, payload: response.data });
+  rootStreams.push(formValues);
 };
 
 export const fetchStreams = () => async dispatch => {
