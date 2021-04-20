@@ -9,6 +9,20 @@ import {
   EDIT_STREAM
 } from "./Types";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyAulxfQiG9TqzEjI7shWJg6CGcCpbYos_s",
+  authDomain: "streamy-45e7d.firebaseapp.com",
+  databaseURL: "https://streamy-45e7d-default-rtdb.firebaseio.com",
+  projectId: "streamy-45e7d",
+  storageBucket: "streamy-45e7d.appspot.com",
+  messagingSenderId: "139885758480",
+  appId: "1:139885758480:web:0a56294589387bab9a6295"
+};
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+} else {
+  firebase.app(); // if already initialized, use that one
+}
 
 export const signIn = userId => {
   return {
@@ -24,11 +38,6 @@ export const signOut = () => {
 };
 
 export const createStream = formValues => async dispatch => {
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  } else {
-    firebase.app(); // if already initialized, use that one
-  }
   firebase
     .database()
     .ref("streams/")
