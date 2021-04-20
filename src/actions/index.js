@@ -38,10 +38,12 @@ export const signOut = () => {
 };
 
 export const createStream = formValues => async dispatch => {
-  firebase
+  const response = await firebase
     .database()
     .ref("streams/")
     .push(formValues);
+
+  dispatch({ type: CREATE_STREAM, payload: response.data });
 };
 
 export const fetchStreams = () => async dispatch => {
