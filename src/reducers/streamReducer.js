@@ -8,6 +8,8 @@ import {
 
 const streamReducer = (state = [], action) => {
   switch (action.type) {
+    case FETCH_STREAMS:
+      return { ...state, ...action.payload };
     case FETCH_STREAM:
       return { ...state, ...action.payload };
     case CREATE_STREAM:
@@ -16,8 +18,6 @@ const streamReducer = (state = [], action) => {
       return { ...state, ...action.payload };
     case DELETE_STREAM:
       return _.omit(state, action.payload);
-    case FETCH_STREAMS:
-      return;
     default:
       return state;
   }
