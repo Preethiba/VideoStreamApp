@@ -4,7 +4,7 @@ import {
   EDIT_STREAM,
   CREATE_STREAM,
   DELETE_STREAM
-} from "../actions/types";
+} from "../actions/Types";
 
 const streamReducer = (state = [], action) => {
   switch (action.type) {
