@@ -39,6 +39,7 @@ class StreamCreate extends React.Component {
           component={this.renderInput}
           label="Enter description"
         />
+        <input type="hidden" name="id" value={} />
         <button className="ui button primary">Submit</button>
       </form>
     );
@@ -61,7 +62,11 @@ const formWrapped = reduxForm({
   validate
 })(StreamCreate);
 
+const mapStateToProps = (state) => {
+  return { streams: Object.values(state.streams) }
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   { createStream }
 )(formWrapped);
