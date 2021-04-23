@@ -22,9 +22,9 @@ export const signOut = () => {
   };
 };
 
-export const createStream = formValues => async dispatch => {
-  const response = await axios.post("/streams.json", formValues);
-  console.log(response);
+export const createStream = formValues => async (dispatch, getState) => {
+  const { userId } = getState().auth;
+  const response = await axios.post("/streams.json", { ...formValues, userId });
 
   dispatch({ type: CREATE_STREAM, payload: response.data });
 };
