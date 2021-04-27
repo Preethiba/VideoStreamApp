@@ -1,4 +1,5 @@
 import streams from "../apis/streams";
+import history from "../history";
 import {
   SIGN_IN,
   SIGN_OUT,
@@ -33,6 +34,7 @@ export const createStream = formValues => async (dispatch, getState) => {
 
   //Do Programmatic navigation to
   //get the user back to teh root route
+  history.push("/");
 };
 
 export const fetchStreams = () => async dispatch => {
