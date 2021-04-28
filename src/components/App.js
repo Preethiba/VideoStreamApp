@@ -6,7 +6,6 @@ import StreamCreate from "./streams/StreamCreate";
 import StreamEdit from "./streams/StreamEdit";
 import StreamDelete from "./streams/StreamDelete";
 import StreamShow from "./streams/StreamShow";
-import history from "../history";
 
 const App = () => {
   return (
