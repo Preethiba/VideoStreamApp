@@ -9,17 +9,25 @@ import {
 export default (state = [], action) => {
   switch (action.type) {
     case FETCH_STREAMS:
-      const streamsList = action.payload;
-      for (const key of Object.keys(streamsList)) {
-        streamsList[key].id = key;
+      const fetchedStreams = action.payload;
+      for (const key of Object.keys(fetchedStreams)) {
+        fetchedStreams[key].id = key;
       }
-      return { ...state, ...streamsList };
+      return { ...state, ...fetchedStreams };
     case FETCH_STREAM:
       return { ...state, ...action.payload };
     case CREATE_STREAM:
-      return { ...state, ...action.payload };
+      const createdStreams = action.payload;
+      for (const key of Object.keys(createdStreams)) {
+        createdStreams[key].id = key;
+      }
+      return { ...state, ...createdStreams };
     case EDIT_STREAM:
-      return { ...state, ...action.payload };
+      const editedStream = action.payload;
+      for (const key of Object.keys(editedStream)) {
+        editedStream[key].id = key;
+      }
+      return { ...state, ...editedStream };
     case DELETE_STREAM:
       return _.omit(state, action.payload);
     default:
