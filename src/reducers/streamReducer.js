@@ -18,15 +18,9 @@ export default (state = [], action) => {
       return { ...state, ...action.payload };
     case CREATE_STREAM:
       const createdStreams = action.payload;
-      for (const key of Object.keys(createdStreams)) {
-        createdStreams[key].id = key;
-      }
       return { ...state, ...createdStreams };
     case EDIT_STREAM:
       const editedStream = action.payload;
-      for (const key of Object.keys(editedStream)) {
-        editedStream[key].id = key;
-      }
       return { ...state, ...editedStream };
     case DELETE_STREAM:
       return _.omit(state, action.payload);
