@@ -17,6 +17,7 @@ class StreamEdit extends React.Component {
   };
 
   render() {
+    console.log(this.props.stream);
     if (!this.props.stream) {
       return <div>Loading...</div>;
     }
@@ -34,7 +35,11 @@ class StreamEdit extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { stream: state.streams[ownProps.match.params.id] };
+  return {
+    stream: state.streams
+      ? state.streams
+      : state.streams[ownProps.match.params.id]
+  };
 };
 
 export default connect(
