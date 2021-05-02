@@ -9,11 +9,7 @@ import {
 export default (state = [], action) => {
   switch (action.type) {
     case FETCH_STREAMS:
-      const fetchedStreams = action.payload;
-      for (const key of Object.keys(fetchedStreams)) {
-        fetchedStreams[key].id = key;
-      }
-      return { ...state, ...fetchedStreams };
+      return { ...state, ...action.payload };
     case FETCH_STREAM:
       return { ...state, ...action.payload };
     case CREATE_STREAM:

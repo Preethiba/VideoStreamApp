@@ -39,13 +39,23 @@ export const createStream = (formValues, history) => async (
 export const fetchStreams = () => async dispatch => {
   const response = await streams.get("/streams.json");
 
+  for (const key of Object.keys(response.data)) {
+    response.data[key].id = key;
+  }
+
   dispatch({ type: FETCH_STREAMS, payload: response.data });
 };
 
 export const fetchStream = id => async dispatch => {
   const response = await streams.get(`/streams/${id}.json`);
 
-  dispatch({ type: FETCH_STREAM, payload: response.data });
+  response.data.id = id;
+
+  const res = {
+    [id]: response.data
+  };
+
+  dispatch({ type: FETCH_STREAM, payload: res });
 };
 
 export const editStream = (id, formValues, history) => async dispatch => {
@@ -55,8 +65,9 @@ export const editStream = (id, formValues, history) => async dispatch => {
   history.push("/");
 };
 
-export const deleteStream = id => async dispatch => {
+export const deleteStream = (id, history) => async dispatch => {
   await streams.delete(`/streams/${id}.json`);
 
   dispatch({ type: DELETE_STREAM, payload: id });
+  history.push("/");
 };
