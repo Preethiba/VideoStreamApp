@@ -49,14 +49,13 @@ export const fetchStreams = () => async dispatch => {
 
 export const fetchStream = id => async dispatch => {
   const response = await streams.get(`/streams/${id}.json`);
+  var res = response.data;
   if (response.data) {
     response.data.id = id;
 
-    const res = {
+    res = {
       [id]: response.data
     };
-  } else {
-    const res = response.data;
   }
 
   dispatch({ type: FETCH_STREAM, payload: res });
