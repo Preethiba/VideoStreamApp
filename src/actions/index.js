@@ -38,9 +38,10 @@ export const createStream = (formValues, history) => async (
 
 export const fetchStreams = () => async dispatch => {
   const response = await streams.get("/streams.json");
-
-  for (const key of Object.keys(response.data)) {
-    response.data[key].id = key;
+  if (response.data) {
+    for (const key of Object.keys(response.data)) {
+      response.data[key].id = key;
+    }
   }
 
   dispatch({ type: FETCH_STREAMS, payload: response.data });
@@ -48,12 +49,15 @@ export const fetchStreams = () => async dispatch => {
 
 export const fetchStream = id => async dispatch => {
   const response = await streams.get(`/streams/${id}.json`);
+  if (response.data) {
+    response.data.id = id;
 
-  response.data.id = id;
-
-  const res = {
-    [id]: response.data
-  };
+    const res = {
+      [id]: response.data
+    };
+  } else {
+    const res = response.data;
+  }
 
   dispatch({ type: FETCH_STREAM, payload: res });
 };
